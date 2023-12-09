@@ -1,3 +1,5 @@
+using MassTransit;
+using MassTransit.RabbitMqTransport;
 using Microsoft.EntityFrameworkCore;
 using Order.API.Models;
 
@@ -14,6 +16,22 @@ builder.Services.AddDbContext<OrderDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnectionString"));
 });
 
+builder.Services.AddMassTransit(configure =>
+{
+    configure.UsingRabbitMq((context, cfg) =>
+    {
+
+        cfg.Host(builder.Configuration["MessageBusConfiguration:Host"], h =>
+        {
+
+            h.Username(builder.Configuration["MessageBusConfiguration:Username"]);
+            h.Password(builder.Configuration["MessageBusConfiguration:Password"]);
+        });
+
+
+    });
+});
+builder.Services.AddMassTransitHostedService();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,5 +46,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+// Configure MassTransit consumers, if any
 
 app.Run();

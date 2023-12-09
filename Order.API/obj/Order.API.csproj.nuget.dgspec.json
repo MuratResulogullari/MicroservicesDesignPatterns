@@ -45,13 +45,21 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MassTransit": {
+              "target": "Package",
+              "version": "[7.1.4, )"
+            },
             "MassTransit.AspNetCore": {
               "target": "Package",
-              "version": "[6.3.2, )"
+              "version": "[7.1.4, )"
+            },
+            "MassTransit.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.1.4, )"
             },
             "MassTransit.RabbitMQ": {
               "target": "Package",
-              "version": "[6.3.2, )"
+              "version": "[7.1.4, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
