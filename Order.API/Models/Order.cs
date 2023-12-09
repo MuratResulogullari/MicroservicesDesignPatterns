@@ -7,6 +7,7 @@
             this.Id = Guid.NewGuid().ToString();
             this.UserId = userId;
             this.CreatedDate = DateTime.Now;
+            SetStatus(OrderStatus.Suspend);
         }
 
         public string Id { get; init; }
@@ -30,6 +31,11 @@
         public void SetAddress(Address address)
         {
             this.Address = address;
+        }
+
+        public void SetStatus(OrderStatus status)
+        {
+            this.Status = status;
         }
 
         public void SetFailMessage(string message)

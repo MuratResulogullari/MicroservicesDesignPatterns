@@ -1,0 +1,52 @@
+﻿Saga Pattern
+	
+	Transaction 
+		İşlem birimidir. bir veya birden fazla operasyondan oluşur.
+		Database in state değiştirebilecek herhangi bir işem CRUD işlemleri.
+
+	ACID (Atomicity Consitency Isolation Durability)
+		 Atomicity   => Ya hep , Ya hiç
+		 Consistency => Dataların turarlı olmasıç Database'i sürekli valid tutar.
+		 Isolation   => Transaction'ların birbirinden bağımsız olmasını ifade eder.
+		 Durability  => Data'ların güvenli bir ortamda saklanmasını ifade eder.
+	
+	Monolith Applications Transaction
+		Yönetimi oldukça kolaydır. Kullanmış olduğunuz bir çok framework veya library transaction yönetimi için yapıları bulunmaktadır.
+		Commit ve Rollback yönetimi kolaydır.
+	
+	Microservices Applications 
+		Bounded Contexts ler olduğunda bir den fazla database oluyor veri parçalı olarak farklı bağlnatılarda tutuluyor saga  pattern böyle durumlar için geliştirilmiştir.
+		
+
+  1. Choreography-based saga
+	
+	.Local transaction sırasını kullanarak bir transaction yönetimi sağlar.
+	.2 ile 4 microservice arasında bir distributed transaction yönetimi için uytgun bir impelemnttasyon'dur.
+	.Sisteme katılan her bir katılımcı karar vericidr. (başarılı veya başarısız)
+	.Choreography implement etmenin bir yolu asynchronous messagging pattern kullanmaktadır.
+	.Her servis kuyruğu dinler, gelen event/message ile ile ilgili işlemi yapar, sonuç başarılı veya başarısız durumunu tekrar kuyruğa döner.
+	.Point-to-Point bir iletişim olmadığınından servisller arası coupling azalır.
+	.Transaction yönetimi merkezi olmadığı için performance bottlenect(darboğaz) azalır. Çünkü merkezi bir transaction değildir.
+
+	Compensable transaction
+		Bir transaction'ların yapmış olduğu işlemi tersine alan transaction'lardır.(zıt transaction)
+
+
+		---------------------									---------------------								---------------------
+		|		1			|									|		2			|								|		 3			|
+		|  Order Service	|						=>			|  Stock Service	|					=>			|  Payment Service	|
+		|					|									|					|								|					|
+		---------------------									---------------------								---------------------
+
+		1   OrderCreatedEvent(publisher)		 -->		1   OrderCreatedEvent(subscribe)					3.c	PaymentCompletedEvent(publisher)
+		2.f StockNotReseverdEvent(subscribe)	 <--		2.f StockNotReseverdEvent(publisher)                
+		3.c PaymentCompletedEvent(subscribe)				2.c StockReseverdEvent(publisher)		-->			2.c StockReseverdEvent(sunscribe)
+		3.f PaymentFailedEvent(subscribe)		 <--	    3.f	PaymentFailedEvent(subscribe)    	<--			3.f	PaymentFailedEvent(publisher)
+				
+
+		OrderStatus
+		-> Suspend
+		-> Completed
+		-> Fail
+
+   2. Orchestration-based saga
