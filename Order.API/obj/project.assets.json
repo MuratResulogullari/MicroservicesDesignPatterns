@@ -96,6 +96,23 @@
           }
         }
       },
+      "MassTransit.EntityFrameworkCore/6.3.2": {
+        "type": "package",
+        "dependencies": {
+          "MassTransit": "6.3.2",
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/MassTransit.EntityFrameworkCoreIntegration.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MassTransit.EntityFrameworkCoreIntegration.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "MassTransit.Extensions.DependencyInjection/7.1.4": {
         "type": "package",
         "dependencies": {
@@ -2823,6 +2840,7 @@
         "dependencies": {
           "MassTransit": "7.1.4",
           "MassTransit.AspNetCore": "7.1.4",
+          "MassTransit.EntityFrameworkCore": "6.3.2",
           "MassTransit.Extensions.DependencyInjection": "7.1.4",
           "MassTransit.RabbitMQ": "7.1.4",
           "Microsoft.EntityFrameworkCore": "6.0.25",
@@ -2908,6 +2926,22 @@
         "lib/netstandard2.0/MassTransit.AspNetCoreIntegration.xml",
         "masstransit.aspnetcore.7.1.4.nupkg.sha512",
         "masstransit.aspnetcore.nuspec",
+        "mt-logo-small.png"
+      ]
+    },
+    "MassTransit.EntityFrameworkCore/6.3.2": {
+      "sha512": "4sOdmNOm2nwFqxz0OFV6JE8r4YmD9DLoz7yfAtkN7Lqa1j2fMQkdPtGuyWC52BpsPqI9Pk4IgMQ8BgyzcfitcA==",
+      "type": "package",
+      "path": "masstransit.entityframeworkcore/6.3.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/MassTransit.EntityFrameworkCoreIntegration.dll",
+        "lib/net461/MassTransit.EntityFrameworkCoreIntegration.xml",
+        "lib/netstandard2.0/MassTransit.EntityFrameworkCoreIntegration.dll",
+        "lib/netstandard2.0/MassTransit.EntityFrameworkCoreIntegration.xml",
+        "masstransit.entityframeworkcore.6.3.2.nupkg.sha512",
+        "masstransit.entityframeworkcore.nuspec",
         "mt-logo-small.png"
       ]
     },

@@ -231,6 +231,10 @@
               "target": "Package",
               "version": "[7.1.4, )"
             },
+            "MassTransit.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.3.2, )"
+            },
             "MassTransit.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[7.1.4, )"
