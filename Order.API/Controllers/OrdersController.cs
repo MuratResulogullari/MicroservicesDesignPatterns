@@ -67,7 +67,7 @@ namespace Order.API.Controllers
                 await _publishEndpoint.Publish(orderCreatedEvent); // RabbitMq bu event yayınlarsın kimleri dinlediğini bilmezsin eğer bu bu event subscribe olan yoksa boşa gitmiş olur
                                                                    // Publish bir event' ı direkt direkt olarak exchange gönderir.
 
-                await _sendEndpointProvider.Send(orderCreatedEvent); // Send ile  Rabbitmq kuyruğuna  göndermiş olursun , kuyruktaki bilgiler kayıt eder ve   subscribe olanlar bu evente alır
+               // await _sendEndpointProvider.Send(orderCreatedEvent); // Send ile  Rabbitmq kuyruğuna  göndermiş olursun , kuyruktaki bilgiler kayıt eder ve   subscribe olanlar bu evente alır
                 // Microservice in bir kuyruğu olur ve diğer microservislerden bazıları sadece bu kuyruğa subscribe olur.
                 var response = new OrderCreateResponse
                 {

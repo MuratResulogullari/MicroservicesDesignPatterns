@@ -4,6 +4,65 @@
     "C:\\Users\\murat.resulogullari\\source\\repos\\MuratResulogullari\\MicroservicesDesignPatterns\\Stock.API\\Stock.API.csproj": {}
   },
   "projects": {
+    "C:\\Users\\murat.resulogullari\\source\\repos\\MuratResulogullari\\MicroservicesDesignPatterns\\Shared\\Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\murat.resulogullari\\source\\repos\\MuratResulogullari\\MicroservicesDesignPatterns\\Shared\\Shared.csproj",
+        "projectName": "Shared",
+        "projectPath": "C:\\Users\\murat.resulogullari\\source\\repos\\MuratResulogullari\\MicroservicesDesignPatterns\\Shared\\Shared.csproj",
+        "packagesPath": "C:\\Users\\murat.resulogullari\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\murat.resulogullari\\source\\repos\\MuratResulogullari\\MicroservicesDesignPatterns\\Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\murat.resulogullari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\murat.resulogullari\\source\\repos\\MuratResulogullari\\MicroservicesDesignPatterns\\Stock.API\\Stock.API.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -32,7 +91,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\murat.resulogullari\\source\\repos\\MuratResulogullari\\MicroservicesDesignPatterns\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\murat.resulogullari\\source\\repos\\MuratResulogullari\\MicroservicesDesignPatterns\\Shared\\Shared.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -45,13 +108,29 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MassTransit": {
+              "target": "Package",
+              "version": "[7.1.4, )"
+            },
             "MassTransit.AspNetCore": {
               "target": "Package",
-              "version": "[6.3.2, )"
+              "version": "[7.1.4, )"
+            },
+            "MassTransit.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.1.4, )"
             },
             "MassTransit.RabbitMQ": {
               "target": "Package",
-              "version": "[6.3.2, )"
+              "version": "[7.1.4, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[6.0.25, )"
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",

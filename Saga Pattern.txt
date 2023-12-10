@@ -32,16 +32,16 @@
 		Bir transaction'ların yapmış olduğu işlemi tersine alan transaction'lardır.(zıt transaction)
 
 
-		---------------------									---------------------								---------------------
-		|		1			|									|		2			|								|		 3			|
-		|  Order Service	|						=>			|  Stock Service	|					=>			|  Payment Service	|
-		|					|									|					|								|					|
-		---------------------									---------------------								---------------------
+		------------------------					------------------------					        ------------------------
+		|	1       	|					|	2		|						|	3	        |
+	   	|  Order Service        |                 =>			|  Stock Service	|			=>			|  Payment Service	|
+		|			|					|			|						|			|					                   
+		------------------------					------------------------						-------------------------
 
-		1   OrderCreatedEvent(publisher)		 -->		1   OrderCreatedEvent(subscribe)					3.c	PaymentCompletedEvent(publisher)
-		2.f StockNotReseverdEvent(subscribe)	 <--		2.f StockNotReseverdEvent(publisher)                
+		1   OrderCreatedEvent(publisher)		 -->		1   OrderCreatedEvent(subscribe)					3.c PaymentSuccessedEvent(publisher)
+		2.f StockNotReseverdEvent(subscribe)	         <--		2.f StockNotReseverdEvent(publisher)                 
 		3.c PaymentCompletedEvent(subscribe)				2.c StockReseverdEvent(publisher)		-->			2.c StockReseverdEvent(sunscribe)
-		3.f PaymentFailedEvent(subscribe)		 <--	    3.f	PaymentFailedEvent(subscribe)    	<--			3.f	PaymentFailedEvent(publisher)
+		3.f PaymentFailedEvent(subscribe)		 <--	        3.f PaymentFailedEvent(subscribe)    	<--			        3.f PaymentFailedEvent(publisher)
 				
 
 		OrderStatus

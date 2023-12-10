@@ -11,7 +11,6 @@ C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesign
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\MassTransit.AspNetCoreIntegration.dll
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\MassTransit.ExtensionsDependencyInjectionIntegration.dll
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\MassTransit.RabbitMqTransport.dll
-C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\Microsoft.Extensions.PlatformAbstractions.dll
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\Microsoft.OpenApi.dll
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\NewId.dll
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\Newtonsoft.Json.dll
@@ -41,3 +40,12 @@ C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesign
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\obj\Debug\net6.0\Stock.API.pdb
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\obj\Debug\net6.0\Stock.API.genruntimeconfig.cache
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\obj\Debug\net6.0\ref\Stock.API.dll
+C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\Shared.dll
+C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Stock.API\bin\Debug\net6.0\Shared.pdb

@@ -11,7 +11,6 @@ C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesign
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Payment.API\bin\Debug\net6.0\MassTransit.AspNetCoreIntegration.dll
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Payment.API\bin\Debug\net6.0\MassTransit.ExtensionsDependencyInjectionIntegration.dll
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Payment.API\bin\Debug\net6.0\MassTransit.RabbitMqTransport.dll
-C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Payment.API\bin\Debug\net6.0\Microsoft.Extensions.PlatformAbstractions.dll
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Payment.API\bin\Debug\net6.0\Microsoft.OpenApi.dll
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Payment.API\bin\Debug\net6.0\NewId.dll
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Payment.API\bin\Debug\net6.0\Newtonsoft.Json.dll
@@ -41,3 +40,6 @@ C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesign
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Payment.API\obj\Debug\net6.0\Payment.API.pdb
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Payment.API\obj\Debug\net6.0\Payment.API.genruntimeconfig.cache
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Payment.API\obj\Debug\net6.0\ref\Payment.API.dll
+C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Payment.API\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Payment.API\bin\Debug\net6.0\Shared.dll
+C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Payment.API\bin\Debug\net6.0\Shared.pdb
