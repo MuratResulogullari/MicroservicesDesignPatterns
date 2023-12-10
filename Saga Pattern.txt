@@ -30,6 +30,7 @@
 
 	Compensable transaction
 		Bir transaction'ların yapmış olduğu işlemi tersine alan transaction'lardır.(zıt transaction)
+		Örneğin order oluştuktan sonra itemsları stocktan düşürüldü ama payment başarısız event fırlatılırsa tekrar itemsları stock mocriservices atıp stock countlarını eski sayılarına döndürmeye compensable denir.
 
 
 		------------------------					------------------------					        ------------------------
@@ -41,7 +42,7 @@
 		1   OrderCreatedEvent(publisher)		 -->		1   OrderCreatedEvent(subscribe)					3.c PaymentSuccessedEvent(publisher)
 		2.f StockNotReseverdEvent(subscribe)	         <--		2.f StockNotReseverdEvent(publisher)                 
 		3.c PaymentCompletedEvent(subscribe)				2.c StockReseverdEvent(publisher)		-->			2.c StockReseverdEvent(sunscribe)
-		3.f PaymentFailedEvent(subscribe)		 <--	        3.f PaymentFailedEvent(subscribe)    	<--			        3.f PaymentFailedEvent(publisher)
+		3.f PaymentFailedEvent(subscribe)		 <--	        3.f PaymentFailedEvent(subscribe)    	        <--		        3.f PaymentFailedEvent(publisher)
 				
 
 		OrderStatus
@@ -50,3 +51,25 @@
 		-> Fail
 
    2. Orchestration-based saga
+	.Microservice'ler arasında tüm transaction merkezi bir yerden yönetilir. (Saga State Machine)
+	.4' den fazla microservice arasında bir distributed transaction yönetimi için uygun bir implemention'dır
+	.Asyncronous messaging pattern kullanmak uygundur.
+	.Transaction yönetimi merkezi olduğu için performance bottleneck fazladır.
+
+ 	Saga State Machine => Operationdaki tüm adımlar birer state dir ve her state desing pattern uygulayarak kolay geçişleri best pratice dir.
+
+	OrderStatus
+	 	-> Suspend
+	 	-> Completed
+	 	-> Fail
+		
+        Saga State Machine (Automatonymous)
+		-> Initial +
+		-> OrderCreated
+		-> StockReserved
+		-> StokNotReserved
+		-> PaymentCompleted
+		-> PaymentFailed
+		-> Final  +
+		
+
