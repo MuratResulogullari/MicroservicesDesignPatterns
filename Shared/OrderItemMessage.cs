@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shared
 {
-    public class OrderItemMessage
+    public class OrderItemMessage 
     {
         public string ProductId { get; set; }
         public int Count { get; set; }
