@@ -50,7 +50,7 @@ namespace Order.API.Controllers
                 _context.Orders.Add(order);
                 await _context.SaveChangesAsync();
 
-                var orderCreatedRequestEvent = new OrderCreatedEvent()
+                var orderCreatedRequestEvent = new OrderCreatedEvent(Guid.NewGuid())
                 {
                     OrderId = order.Id,
                     UserId = order.UserId,
@@ -62,11 +62,11 @@ namespace Order.API.Controllers
                         Expiration = request.Payment.Expiration,
                         TotalPrice = request.OrderItems.Sum(x => x.Count * x.Price),
                     },
-                    OrderItems = request.OrderItems.Select(x => new OrderItemMessage() { ProductId = x.ProductId, Count = x.Count, Price = x.Price }).ToList(),
+                    OrderItems = request.OrderItems.Select(x => new OrderItemMessage() { ProductId = x.ProductId, Count = x.Count, Price = x.Price }).ToList()
                 };
                 var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri($"queue:{RabbitMQConsts.OrderSagaQueueName}"));
                 await sendEndpoint.Send<IOrderCreatedRequestEvent>(orderCreatedRequestEvent); // Send ile  Rabbitmq kuyruğuna  göndermiş olursun , kuyruktaki bilgiler kayıt eder ve   subscribe olanlar bu evente alır
-                                                                     // Microservice in bir kuyruğu olur ve diğer microservislerden bazıları sadece bu kuyruğa subscribe olur.
+                                                                                              // Microservice in bir kuyruğu olur ve diğer microservislerden bazıları sadece bu kuyruğa subscribe olur.
 
                 var response = new OrderCreateResponse
                 {

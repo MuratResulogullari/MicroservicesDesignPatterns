@@ -1,4 +1,5 @@
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Shared\bin\Debug\net6.0\Shared.deps.json
+C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Shared\bin\Debug\net6.0\Shared.runtimeconfig.json
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Shared\bin\Debug\net6.0\Shared.dll
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Shared\bin\Debug\net6.0\Shared.pdb
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Shared\obj\Debug\net6.0\Shared.csproj.AssemblyReference.cache
@@ -9,4 +10,5 @@ C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesign
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Shared\obj\Debug\net6.0\Shared.dll
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Shared\obj\Debug\net6.0\refint\Shared.dll
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Shared\obj\Debug\net6.0\Shared.pdb
+C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Shared\obj\Debug\net6.0\Shared.genruntimeconfig.cache
 C:\Users\murat.resulogullari\source\repos\MuratResulogullari\MicroservicesDesignPatterns\Shared\obj\Debug\net6.0\ref\Shared.dll

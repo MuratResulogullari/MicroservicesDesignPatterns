@@ -5,12 +5,7 @@ namespace WorkerService.Models
 {
     public class OrderStateInstance : SagaStateMachineInstance
     {
-        public OrderStateInstance(string userId, string orderId)
-        {
-            this.CorrelationId = Guid.NewGuid();
-            this.CreatedDate = DateTime.UtcNow;
-        }
-
+      
         public Guid CorrelationId { get; set; }
         public string CurrentState { get; set; }
         public string OderderId { get; set; }
@@ -42,9 +37,9 @@ namespace WorkerService.Models
             properties.ForEach(p =>
             {
                 var value = p.GetValue(this, null);
-                stringBuilder.Append($"{p.Name}:{value}");
+                stringBuilder.AppendLine($"{p.Name}:{value}");
             });
-            stringBuilder.Append("-----------------------------------------");
+            stringBuilder.AppendLine("-----------------------------------------");
             return stringBuilder.ToString();
         }
     }
