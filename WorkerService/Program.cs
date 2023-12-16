@@ -5,7 +5,7 @@ using System.Reflection;
 using WorkerService;
 using WorkerService.Models;
 
-Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
+IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureLogging(logging =>
     {
         logging.AddConsole();
@@ -33,13 +33,13 @@ Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
                     opt.Username(hostContext.Configuration["MessageBusConfiguration:Username"]);
                     opt.Password(hostContext.Configuration["MessageBusConfiguration:Password"]);
                 });
-                configure.ReceiveEndpoint(RabbitMQConsts.OrderSagaQueueName, configureEndpoint =>
+                configure.ReceiveEndpoint(RabbitMQConsts.OrchestrationOrderSagaQueueName, configureEndpoint =>
                 {
                     configureEndpoint.ConfigureSaga<OrderStateInstance>(busFactory);
                 });
             }));
         });
-        services.AddMassTransitHostedService();
+
         services.AddHostedService<Worker>();
     })
     .Build();

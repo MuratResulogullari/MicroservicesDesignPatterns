@@ -1,6 +1,8 @@
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
+using Order.API.Consumers;
 using Order.API.Models;
+using Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,16 +19,27 @@ builder.Services.AddDbContext<OrderDbContext>(options =>
 
 builder.Services.AddMassTransit(configure =>
 {
+
+    configure.AddConsumer<OrderCompletedConsumer>();
+    configure.AddConsumer<OrderFailedConsumer>();
     configure.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host(builder.Configuration["MessageBusConfiguration:Host"], h =>
         {
             h.Username(builder.Configuration["MessageBusConfiguration:Username"]);
             h.Password(builder.Configuration["MessageBusConfiguration:Password"]);
+        }); 
+        cfg.ReceiveEndpoint(RabbitMQConsts.OrchestrationOrderCompletedQueueName, configureEndpoint =>
+        {
+            configureEndpoint.ConfigureConsumer<OrderCompletedConsumer>(context);
+        });
+        cfg.ReceiveEndpoint(RabbitMQConsts.OrchestrationOrderFailedQueueName, configureEndpoint =>
+        {
+            configureEndpoint.ConfigureConsumer<OrderFailedConsumer>(context);
         });
     });
 });
-builder.Services.AddMassTransitHostedService();
+//builder.Services.AddMassTransitHostedService();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

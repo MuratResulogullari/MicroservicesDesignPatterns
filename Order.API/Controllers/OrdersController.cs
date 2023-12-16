@@ -4,8 +4,9 @@ using Order.API.DTOs.Orders.Input;
 using Order.API.DTOs.Orders.Output;
 using Order.API.Models;
 using Shared;
+using Shared.Events;
+using Shared.Interfaces;
 using System.Net.Mime;
-using WorkerService.Interfaces;
 
 namespace Order.API.Controllers
 {
@@ -15,15 +16,18 @@ namespace Order.API.Controllers
     {
         private readonly OrderDbContext _context;
         private readonly ISendEndpointProvider _sendEndpointProvider;
+        private readonly IPublishEndpoint _publishEndpoint;
 
         public OrdersController(OrderDbContext context
 
             , ISendEndpointProvider sendEndpointProvider
+            , IPublishEndpoint publishEndpoint
             )
         {
             _context = context;
 
             _sendEndpointProvider = sendEndpointProvider;
+            _publishEndpoint = publishEndpoint;
         }
 
         [HttpPost("create"), DisableRequestSizeLimit]
@@ -50,7 +54,7 @@ namespace Order.API.Controllers
                 _context.Orders.Add(order);
                 await _context.SaveChangesAsync();
 
-                var orderCreatedRequestEvent = new OrderCreatedEvent(Guid.NewGuid())
+                var orderCreatedEvent = new OrderCreatedEvent(Guid.NewGuid())
                 {
                     OrderId = order.Id,
                     UserId = order.UserId,
@@ -64,10 +68,11 @@ namespace Order.API.Controllers
                     },
                     OrderItems = request.OrderItems.Select(x => new OrderItemMessage() { ProductId = x.ProductId, Count = x.Count, Price = x.Price }).ToList()
                 };
-                var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri($"queue:{RabbitMQConsts.OrderSagaQueueName}"));
-                await sendEndpoint.Send<IOrderCreatedRequestEvent>(orderCreatedRequestEvent); // Send ile  Rabbitmq kuyruğuna  göndermiş olursun , kuyruktaki bilgiler kayıt eder ve   subscribe olanlar bu evente alır
-                                                                                              // Microservice in bir kuyruğu olur ve diğer microservislerden bazıları sadece bu kuyruğa subscribe olur.
-
+                var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri($"queue:{RabbitMQConsts.OrchestrationOrderSagaQueueName}"));
+                await sendEndpoint.Send<IOrderCreatedEvent>(orderCreatedEvent); // Send ile  Rabbitmq kuyruğuna  göndermiş olursun , kuyruktaki bilgiler kayıt eder ve   subscribe olanlar bu evente alır
+                                                                                // Microservice in bir kuyruğu olur ve diğer microservislerden bazıları sadece bu kuyruğa subscribe olur.
+                                                                                //await _publishEndpoint.Publish(orderCreatedRequestEvent);
+                                                                                //await _publishEndpoint.Publish<IOrderCreatedEvent>(orderCreatedEvent);
                 var response = new OrderCreateResponse
                 {
                     OrderId = order.Id,

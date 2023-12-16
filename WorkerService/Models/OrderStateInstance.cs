@@ -1,14 +1,13 @@
-﻿using Automatonymous;
+﻿using MassTransit;
 using System.Text;
 
 namespace WorkerService.Models
 {
     public class OrderStateInstance : SagaStateMachineInstance
     {
-      
         public Guid CorrelationId { get; set; }
         public string CurrentState { get; set; }
-        public string OderderId { get; set; }
+        public string OrderId { get; set; }
         public string UserId { get; set; }
         public string CardName { get; set; }
         public string CardNumber { get; set; }

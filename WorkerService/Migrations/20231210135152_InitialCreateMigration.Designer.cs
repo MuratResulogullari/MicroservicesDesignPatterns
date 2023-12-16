@@ -54,7 +54,7 @@ namespace WorkerService.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("OderderId")
+                    b.Property<string>("OrderId")
                         .IsRequired()
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");

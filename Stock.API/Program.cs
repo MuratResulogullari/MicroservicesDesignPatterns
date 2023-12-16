@@ -1,5 +1,7 @@
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
+using Shared;
+using Stock.API.Consumers;
 using Stock.API.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +19,8 @@ builder.Services.AddDbContext<StockDbContext>(options =>
 });
 builder.Services.AddMassTransit(configure =>
 {
+    configure.AddConsumer<OrderCreatedEventConsumer>();
+    configure.AddConsumer<CompensableStockRollbackMessageConsumer>();
     configure.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host(builder.Configuration["MessageBusConfiguration:Host"], h =>
@@ -24,9 +28,17 @@ builder.Services.AddMassTransit(configure =>
             h.Username(builder.Configuration["MessageBusConfiguration:Username"]);
             h.Password(builder.Configuration["MessageBusConfiguration:Password"]);
         });
+        cfg.ReceiveEndpoint(RabbitMQConsts.OrchestrationOrderCreatedQueueName, ce =>
+        {
+            ce.ConfigureConsumer<OrderCreatedEventConsumer>(context);
+        });
+        cfg.ReceiveEndpoint(RabbitMQConsts.OrchestrationCompensableStockRollbackMessageQueueName, ce =>
+        {
+            ce.ConfigureConsumer<CompensableStockRollbackMessageConsumer>(context);
+        });
     });
 });
-builder.Services.AddMassTransitHostedService();
+//builder.Services.AddMassTransitHostedService();
 
 var app = builder.Build();
 
@@ -39,10 +51,10 @@ if (app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<StockDbContext>();
-    context.Stocks.Add(new Stock.API.Models.Stock("2E773231-D664-45CA-92EC-6432ED515CBB", 100));
-    context.Stocks.Add(new Stock.API.Models.Stock("A1041B27-DFA9-411F-BE39-4EAE3D6C499A", 1203));
-    context.Stocks.Add(new Stock.API.Models.Stock("A5FC7507-6AA5-4603-82E6-5759A452339F", 345));
-    context.Stocks.Add(new Stock.API.Models.Stock("DD6659C5-AAE8-4A06-A338-BF3EF5F88A94", 28));
+    context.Stocks.Add(new Stock.API.Models.Stock("2E773231-D664-45CA-92EC-6432ED515CBB", 5));
+    context.Stocks.Add(new Stock.API.Models.Stock("A1041B27-DFA9-411F-BE39-4EAE3D6C499A", 5));
+    context.Stocks.Add(new Stock.API.Models.Stock("A5FC7507-6AA5-4603-82E6-5759A452339F", 5));
+    context.Stocks.Add(new Stock.API.Models.Stock("DD6659C5-AAE8-4A06-A338-BF3EF5F88A94", 5));
     context.SaveChanges();
 }
 

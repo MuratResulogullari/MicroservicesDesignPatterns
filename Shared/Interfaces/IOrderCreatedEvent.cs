@@ -1,8 +1,8 @@
 ﻿using MassTransit;
 
-namespace Shared
+namespace Shared.Interfaces
 {
-    public interface IOrderCreatedEvent:CorrelatedBy<Guid>
+    public interface IOrderCreatedEvent : CorrelatedBy<Guid>
     {
         string OrderId { get; set; }
         List<OrderItemMessage> OrderItems { get; set; }

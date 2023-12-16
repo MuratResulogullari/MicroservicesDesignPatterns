@@ -1,4 +1,6 @@
 using MassTransit;
+using Payment.API.Consumers;
+using Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMassTransit(configure =>
 {
+    configure.AddConsumer<StockReservedEventConsumer>();
     configure.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host(builder.Configuration["MessageBusConfiguration:Host"], h =>
@@ -17,9 +20,13 @@ builder.Services.AddMassTransit(configure =>
             h.Username(builder.Configuration["MessageBusConfiguration:Username"]);
             h.Password(builder.Configuration["MessageBusConfiguration:Password"]);
         });
+        cfg.ReceiveEndpoint(RabbitMQConsts.OrchestrationStockReservedQueueName, ce =>
+        {
+            ce.ConfigureConsumer<StockReservedEventConsumer>(context);
+        });
     });
 });
-builder.Services.AddMassTransitHostedService();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

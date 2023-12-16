@@ -54,7 +54,7 @@
           "dependencies": {
             "MassTransit": {
               "target": "Package",
-              "version": "[7.3.1, )"
+              "version": "[8.1.2, )"
             },
             "MassTransit.AspNetCore": {
               "target": "Package",
@@ -62,7 +62,7 @@
             },
             "MassTransit.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.3.1, )"
+              "version": "[8.1.2, )"
             },
             "MassTransit.Extensions.DependencyInjection": {
               "target": "Package",
@@ -70,7 +70,21 @@
             },
             "MassTransit.RabbitMQ": {
               "target": "Package",
-              "version": "[7.3.1, )"
+              "version": "[8.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[6.0.25, )"
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
@@ -146,7 +160,7 @@
           "dependencies": {
             "MassTransit": {
               "target": "Package",
-              "version": "[7.3.1, )"
+              "version": "[8.1.2, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -155,10 +169,6 @@
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.25, )"
-            },
-            "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[6.0.25, )"
             },
@@ -239,7 +249,7 @@
           "dependencies": {
             "MassTransit": {
               "target": "Package",
-              "version": "[7.3.1, )"
+              "version": "[8.1.2, )"
             },
             "MassTransit.AspNetCore": {
               "target": "Package",
@@ -247,7 +257,7 @@
             },
             "MassTransit.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.3.1, )"
+              "version": "[8.1.2, )"
             },
             "MassTransit.Extensions.DependencyInjection": {
               "target": "Package",
@@ -255,7 +265,17 @@
             },
             "MassTransit.RabbitMQ": {
               "target": "Package",
-              "version": "[7.3.1, )"
+              "version": "[8.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.25, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",

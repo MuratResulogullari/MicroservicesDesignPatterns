@@ -82,7 +82,7 @@ namespace Order.API.Migrations
 
             modelBuilder.Entity("Order.API.Models.Order", b =>
                 {
-                    b.OwnsOne("Order.API.Models.Address", "Address", b1 =>
+                    b.OwnsOne("Order.API.Models.Order.Address#Order.API.Models.Address", "Address", b1 =>
                         {
                             b1.Property<string>("OrderId")
                                 .HasColumnType("nvarchar(36)");
@@ -115,7 +115,7 @@ namespace Order.API.Migrations
 
                             b1.HasKey("OrderId");
 
-                            b1.ToTable("Orders");
+                            b1.ToTable("Orders", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("OrderId");

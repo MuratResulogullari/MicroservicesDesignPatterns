@@ -1,10 +1,12 @@
-﻿namespace Shared
+﻿using Shared.Interfaces;
+
+namespace Shared.Events
 {
     public class OrderCreatedEvent : IOrderCreatedEvent
     {
         public OrderCreatedEvent(Guid correlationId)
         {
-            this.CorrelationId = correlationId;
+            CorrelationId = correlationId;
         }
 
         public Guid CorrelationId { get; }
