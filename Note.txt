@@ -1,0 +1,61 @@
+﻿Event Sourcing
+
+Dataları bir event olarak append-only kaydeden bir pattern'dır.
+Yapılan her değişiklik bir event olarak temsil edilir ve event log'a kaydedilir.
+Bu event'ler oyanatılarak, bir entity'nin güncel durumu elde edilir. 
+Event'ler her zaman geçmiş zamanda temsil edilir.
+  -UserCreated
+  -ProductNameChanged
+
+Note : 
+Mahkemelik olan dataların özellikle değişiklikler her bir adımı eventlarla kaydedilirse geriye dönük bir rapor tutulmuş olur. Hukuki süreçler rahatlamış olsun 
+veya Loglama yaparak ta kurturulursun bütün propertylerini loglarsın.
+
+Event Sourcing'in Faydaları nelerdir?
+* Audit, event-sorucing system bütün event'leri immutable olarak bir seri halinde kaydeder.
+* Bütün state değişiklikleri kaydedilir. Herhangi bir T zamamnına geri dönülebilir. Debugging için çok önemli.
+* Veritabanı çökse bile, event'ler re-play edilerek tekrar enittiy'lerin güncel elde edilebilir.
+
+Event'lerin özellikleri nelerdir?
+*Bir event domain içerisinde meydana geleln bir gerçeği temsil etmesidir.
+*Immutable'dır. Değiştirilemezler.
+*Event'ler geçmiş zamam ile temsil edilirler. (UserCreated/ProductNaameChanged)
+*EventSourcing açısından bir event unique bir metadata bilgisine sahiptir. (timestamp,identifier)
+
+CQRS (Command-Query Pattern/Principle)
+Greg young tarafından 2010 yılında bu pattern açıklanmıştır.
+Command(state yapılan her bir değişiklik)
+Query( data okuma işlemi)
+
+Stream 
+*Özel bir domain'e özgü olan event'ler bir stream olarak kaydedilir.
+*Bir stream'dan event'leri okuyarak güncel state elde edileiblir.
+*Stream'lerin belirli objeleri temsil eden  unique identifier'ları vardır.
+
+Event Store
+Event Sorucing için geliştirilmiş bir veritabanıdır.
+Event Sourcing için üretilen event'leri kronolojik bir sırada depolar.
+Kaydedilen event'leri dinleyebilmemiz için notification sistemini kendi içerisinde barındırmaktadır.
+Open Source bir veritabanıdır.
+Http ve TCP protokolleri üzerinden haberlelilebilir.
+NoSql bir veritabanı kullanman halinde arada bir message broker ihtiyaç duyacaksın notifikations için
+Event Store notification özelliği var olduğundan message bus  gerek kalmadan SQL database ile haberleşmesi bir data geldiği zaman 
+ilgili datayı sql databasein statetini güncellemsini sağalar.
+
+Projection
+*Event-based data model'den okuma ve yazma model'lerinin oluşturlmasını sunar
+*Ham datanın yorumlanmasıdır.
+*stream içerisindeki data gerçek datadır projection ise gölgesi gibi yansıması.
+
+Subscription
+*Database(even-store) içerisine kaydedilen her bir event bir notification yayınlar, bu notification'lara subscribe olurdak belli işlemler gerçekleştirebiliriz.
+Örnek: read-database'i güncellemek
+
+Write Model
+*CQRS içerisnde Command'ların nasıl ele alınacağı ile ilgilidir. Bu command'lar nereye ve nasıl yazılacak?
+*DDD içerisinde event'leri veritabanına kaydetme işlemini aggregate'ler içerisinde gerçekleştirmek en uygun senaryodur.
+*Aggregate içerisinde başarılı yapılan her bir durum yeni bir event olarak ortaya çıkacaktır. Event meydana  geldiği zaman bu event store kaydedilecektir.
+
+Read Model
+CQRS içerisinde Query'ların nasıl ele alınacağı ile ilgilidir.
+Business işlemlerinin okunabilir forma dünüşümüdür.

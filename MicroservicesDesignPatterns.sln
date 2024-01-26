@@ -6,9 +6,22 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B0FA99F3-CB11-44DA-BF2C-AD0C0CD061B7}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		Note.txt = Note.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcing.Shared", "EventSourcing.Shared\EventSourcing.Shared.csproj", "{4AA4FDA8-A29F-4271-9481-3ECA843650C5}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AA4FDA8-A29F-4271-9481-3ECA843650C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AA4FDA8-A29F-4271-9481-3ECA843650C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AA4FDA8-A29F-4271-9481-3ECA843650C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AA4FDA8-A29F-4271-9481-3ECA843650C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
