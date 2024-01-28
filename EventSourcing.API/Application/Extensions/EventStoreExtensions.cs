@@ -1,0 +1,28 @@
+﻿using EventStore.ClientAPI;
+
+namespace EventSourcing.API.Application.Extensions
+{
+  public static class EventStoreExtensions
+  {
+    public static void RegisteStore(this IServiceCollection services, IConfiguration configuration)
+    {
+      var connection = EventStoreConnection.Create(connectionString: configuration.GetConnectionString("EventStore"));
+      connection.ConnectAsync().Wait();
+      services.AddSingleton(connection);
+      using var logFactor = LoggerFactory.Create(builder =>
+      {
+        builder.SetMinimumLevel(LogLevel.Information);
+        builder.AddConsole();
+      });
+      var logger = logFactor.CreateLogger("Program");
+      connection.Connected += (sender, args) =>
+      {
+        logger.LogInformation("EventStore connection established");
+      };
+      connection.ErrorOccurred += (sender, args) =>
+      {
+        logger.LogError(args.Exception.Message);
+      };
+    }
+  }
+}

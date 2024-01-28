@@ -1,6 +1,6 @@
 ﻿namespace EventSourcing.API.DTOs
 {
-  public class ProductDto
-  {
-  }
+    public class ProductDto
+    {
+    }
 }
