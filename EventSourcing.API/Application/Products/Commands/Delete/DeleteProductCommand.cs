@@ -4,6 +4,11 @@ namespace EventSourcing.API.Application.Products.Commands.Delete
 {
   public class DeleteProductCommand:IRequest
   {
-        public Guid Id { get; set; }
+    public DeleteProductCommand(Guid ıd)
+    {
+      Id = ıd;
+    }
+
+    public Guid Id { get; set; }
     }
 }

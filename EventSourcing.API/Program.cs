@@ -1,5 +1,7 @@
 using EventSourcing.API.Application.Extensions;
 using EventSourcing.API.Domain.EventStores;
+using MediatR;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,8 @@ builder.Services.AddSwaggerGen();
 // register store
 builder.Services.RegisteStore(builder.Configuration);
 builder.Services.AddSingleton<ProductStream>();
+
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

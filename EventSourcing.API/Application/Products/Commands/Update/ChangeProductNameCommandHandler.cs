@@ -14,7 +14,7 @@ namespace EventSourcing.API.Application.Products.Commands.Update
 
     public async Task<Unit> Handle(ChangeProductNameCommand request, CancellationToken cancellationToken)
     {
-      _productStream.NameChanged(request.ChangeProductNameDto);
+      _productStream.NameChanged(request.Param);
       await _productStream.SaveAsync();
       return Unit.Value;
     }
